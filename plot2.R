@@ -1,0 +1,5 @@
+file <- read.csv("household_power_consumption.txt", sep=";", na.strings='?', header=TRUE, colClasses = c("character", "factor", rep("numeric",7)))
+selection <- subset(file, Date == "1/2/2007" | Date == "2/2/2007")
+plot(strptime(paste(selection$Date,selection$Time),"%d/%m/%Y %H:%M:%S"),selection$Global_active_power,xlab="",ylab="Global Active Power (kilowatts)",type="l")
+dev.copy(png, file = "plot2.png")
+dev.off()
